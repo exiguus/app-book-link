@@ -1,0 +1,89 @@
+{
+  "name": "book-link",
+  "version": "1.0.0",
+  "description": "Digitalize and share your bookshelf",
+  "scripts": {
+    "dev": "turbo run dev --parallel --no-cache",
+    "test": "turbo run test",
+    "check": "turbo run check --parallel",
+    "build": "turbo run lint test build check",
+    "build:packages": "turbo run lint test build check --filter=./packages/*",
+    "build:book-search": "turbo run lint test build check --filter=book-search",
+    "clean": "turbo run clean --force --parallel",
+    "format": "pnpm format:fix",
+    "format:fix": "prettier --write . --plugin-search-dir=.",
+    "lint": "pnpm lint:fix",
+    "lint:fix": "eslint . --fix --ext .ts,.vue,.js,.mjs,.cjs",
+    "docs:build:packages": "node scripts/packages.mjs",
+    "docs:build": "pnpm docs:build:packages",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major",
+    "prepare": "pnpm husky install"
+  },
+  "author": {
+    "name": "Simon Gattner",
+    "url": "https://gattner.name/",
+    "mastodon": "https://toot.community/@exiguus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exiguus/app-book-link.git"
+  },
+  "homepage": "https://github.com/exiguus/app-book-link#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/prompt-cli": "^17.4.2",
+    "@jest/globals": "^29.6.2",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^18.17.3",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.2.1",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-turbo": "^0.0.10",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-sonarjs": "^0.18.0",
+    "eslint-plugin-testing-library": "^6.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "husky": "^8.0.3",
+    "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
+    "jest-watch-typeahead": "^2.2.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^3.0.1",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.1.1",
+    "turbo": "^1.10.12",
+    "typescript": "^5.1.6",
+    "typescript-plugin-css-modules": "^5.0.1"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx|vue|mjs|cjs)": [
+      "pnpm format:fix",
+      "pnpm lint:fix"
+    ],
+    "*.@(md|mdx|json)": [
+      "pnpm format:fix"
+    ]
+  },
+  "packageManager": "pnpm@8.6.5",
+  "engines": {
+    "npm": ">=8.19.4 <10.0.0",
+    "node": ">=16.2.0 <19.0.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@nuxt/test-utils>vitest": "0.34"
+      }
+    }
+  }
+}

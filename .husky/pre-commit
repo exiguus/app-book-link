@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+pnpm docs:build
+if [ -e packages/PACKAGES.md ]
+then
+  git add packages/PACKAGES.md
+fi
+pnpm lint-staged

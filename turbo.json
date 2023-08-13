@@ -1,0 +1,57 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "clean": {
+      "dependsOn": ["^clean"],
+      "inputs": [".output/**", ".nuxt/**"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".output/**", ".nuxt/**"]
+    },
+    "test": {
+      "dependsOn": ["^test", "lint", "build"],
+      "inputs": [
+        "*.vue",
+        "*.ts",
+        "**/*.ts",
+        "test/*.vue",
+        "test/*.ts",
+        "test/**/*.vue",
+        "test/**/*.ts",
+        "types/*.ts",
+        "mocks/*.ts"
+      ]
+    },
+    "check": {
+      "dependsOn": ["^check", "build"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "inputs": [
+        "*.vue",
+        "*.ts",
+        "**/*.vue",
+        "**/*.ts",
+        "*.js",
+        "**/*.js",
+        "*.mjs",
+        "**/*.mjs",
+        "*.cjs",
+        "**/*.cjs",
+        "*.css",
+        "**/*.css",
+        "*.scss",
+        "**/*.scss"
+      ]
+    },
+    "format": {
+      "dependsOn": ["^format"],
+      "inputs": ["*.vue", "*.ts", "*.js", "*.mjs", "*.cjs", "*.html", "*.css", "*.scss"]
+    },
+    "dev": {
+      "cache": false
+    }
+  },
+  "globalDependencies": [".env", "package.json", "tsconfig.json", "tsconfig.global.json"]
+}

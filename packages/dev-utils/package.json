@@ -1,0 +1,73 @@
+{
+  "name": "@monorepo/dev-utils",
+  "version": "1.0.0",
+  "description": "Development utilities for monorepo",
+  "exports": {
+    "./peerDependencies": {
+      "types": "./dist/types/peerDependencies/index.d.ts",
+      "module": "./dist/es/peerDependencies/index.js",
+      "require": "./dist/cjs/peerDependencies/index.js"
+    },
+    "./tableMocks": {
+      "types": "./dist/types/tableMocks/index.d.ts",
+      "module": "./dist/es/tableMocks/index.js",
+      "require": "./dist/cjs/tableMocks/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "pnpm dev:es && pnpm dev:cjs",
+    "dev:es": "NODE_ENV=development tsc --watch",
+    "dev:cjs": "NODE_ENV=development tsc --project tsconfig.commonjs.json --watch",
+    "build": "pnpm build:es; pnpm build:cjs",
+    "build:es": "NODE_ENV=production tsc",
+    "build:cjs": "NODE_ENV=production tsc --project tsconfig.commonjs.json",
+    "clean": "rm -rf ./dist/",
+    "check": "tsc --pretty --noEmit",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,mjs,html}\"",
+    "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx --ext mjs",
+    "test:unit": "dotenv -e .env.local -- jest",
+    "test": "NODE_ENV=test pnpm test:unit"
+  },
+  "keywords": [
+    "monorepo",
+    "development",
+    "dev",
+    "utils"
+  ],
+  "author": {
+    "name": "Simon Gattner",
+    "url": "https://gattner.name/",
+    "mastodon": "https://toot.community/@exiguus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exiguus/app-book-link.git"
+  },
+  "homepage": "https://github.com/exiguus/app-book-link/packages/dev-utils#readme",
+  "devDependencies": {
+    "@jest/globals": "^29.6.2",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^18.17.3",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.2.1",
+    "jest": "^29.6.2",
+    "jest-watch-typeahead": "^2.2.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6",
+    "typescript-plugin-css-modules": "^5.0.1"
+  },
+  "peerDependencies": {
+    "@jest/globals": "^29.6.2",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^18.17.3",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.2.1",
+    "jest": "^29.6.2",
+    "jest-watch-typeahead": "^2.2.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6",
+    "typescript-plugin-css-modules": "^5.0.1"
+  }
+}

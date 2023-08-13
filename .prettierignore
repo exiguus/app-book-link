@@ -1,0 +1,14 @@
+
+.vercel
+.turbo
+.pnpm-debug.log
+.env
+.nuxt
+.output
+TODO.md
+coverage
+node_modules
+dist
+out
+pnpm-*.yaml
+

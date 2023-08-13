@@ -1,0 +1,9 @@
+.turbo
+.pnpm-debug.log
+.vscode
+.env
+.turbo
+.peerDeps.log
+node_modules
+dist
+backup

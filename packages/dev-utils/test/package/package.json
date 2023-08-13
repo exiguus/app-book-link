@@ -1,0 +1,8 @@
+{
+  "peerDependencies": {
+    "example-package": "^42"
+  },
+  "devDependencies": {
+    "example-package": "^42"
+  }
+}

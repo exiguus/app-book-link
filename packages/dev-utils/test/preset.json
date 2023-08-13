@@ -1,0 +1,5 @@
+{
+  "peerDependencies": {
+    "another-example-package": "^23"
+  }
+}

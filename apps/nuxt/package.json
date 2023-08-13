@@ -1,0 +1,60 @@
+{
+  "name": "book-link-frontend",
+  "version": "1.0.0",
+  "description": "Book Search Frontend Application",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "format": "pnpm format:fix",
+    "format:fix": "prettier --write .",
+    "lint": "pnpm lint:fix",
+    "lint:fix": "eslint . --fix --ext .ts,.vue,.js,.mjs,.cjs",
+    "check:types": "nuxi typecheck . --noEmit",
+    "check": "pnpm check:types",
+    "test:unit": "vitest --run",
+    "test:unit:dev": "vitest --watch",
+    "test": "pnpm test:unit",
+    "postinstall": "nuxt prepare"
+  },
+  "keywords": [
+    "monorepo",
+    "development",
+    "dev",
+    "utils"
+  ],
+  "author": {
+    "name": "Simon Gattner",
+    "url": "https://gattner.name/",
+    "mastodon": "https://toot.community/@exiguus"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exiguus/app-book-link.git"
+  },
+  "homepage": "https://github.com/exiguus/app-book-link/apps/nuxt#readme",
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/test-utils": "^3.6.5",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@types/jsdom": "^21.1.1",
+    "@types/node": "^18.17.3",
+    "@vue/test-utils": "^2.4.1",
+    "eslint": "^8.32.0",
+    "jsdom": "^22.1.0",
+    "nuxt": "^3.6.5",
+    "sass": "^1.65.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1",
+    "vue": "^3.3.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1",
+    "vue": "^3.3.4"
+  }
+}
