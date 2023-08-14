@@ -33,6 +33,6 @@
       "hidden": true
     }
   ],
-  "commitUrlFormat": "https://github.com/gattner-name/stieldiele/commits/{{hash}}",
-  "compareUrlFormat": "https://github.com/gattner-name/stieldiele/compare/{{previousTag}}...{{currentTag}}"
+  "commitUrlFormat": "https://github.com/exiguus/app-book-search/commits/{{hash}}",
+  "compareUrlFormat": "https://github.com/exiguus/app-book-search/compare/{{previousTag}}...{{currentTag}}"
 }
