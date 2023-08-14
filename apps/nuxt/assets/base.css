@@ -105,36 +105,3 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
-input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  transition:
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
-}
-
-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-text);
-  background-color: var(--color-primary);
-  transition:
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
-  cursor: pointer;
-}
-
-button::hover {
-  background-color: var(--color-primary-hover);
-}

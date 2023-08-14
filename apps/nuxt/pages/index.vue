@@ -9,5 +9,7 @@ export default {
 </script>
 
 <template>
-  <TheWelcome />
+  <div class="welcome">
+    <TheWelcome />
+  </div>
 </template>

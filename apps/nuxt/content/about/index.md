@@ -1,8 +1,10 @@
-# About <strong class="green">Book_Link</strong>
+# About <strong class="green">book_link</strong>
 
-<strong class="green">Book*Link</strong> is a App to search a Book by \_ISBN* or _Title_ and _Author_.
+<!-- prettier-ignore-start -->
+<strong class="green">book_link</strong> is a App to search a Book by _ISBN_ or _Title_ and _Author_.
 And retrieve the book cover and description.
 Share the book with your friends.
+<!-- prettier-ignore-end -->
 
 ## Use Cases
 
@@ -20,3 +22,15 @@ What was my motivation to create this app?
 - Digitialize and share my bookshelf
 - Take a closer look at Nuxt 3 and Vue 3 Composition API and Vue + TypeScript
 - Deploy, Develop and Run Vercel Serverless Functions
+
+## Features
+
+What are the features of this app?
+
+- Search a book by ISBN, copy and share the book information
+
+Soon:
+
+- Search a book by Title and Author
+- Share the barcode with the OS share target picker
+- Share the result page with the OS share target picker

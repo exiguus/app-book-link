@@ -1,4 +1,4 @@
-# Book Link App
+# book_link App
 
 Search a Book by ISBN or Title and Author.
 And retrieve the book cover and description.
@@ -8,8 +8,9 @@ Try it: https://book-link.vercel.app/
 
 ## Use Cases
 
-- [ ] Search a book by ISBN
-- [ ] Scan a book barcode, share and search it
+- [x] Search a book by ISBN
+- [x] Copy the results to the clipboard
+- [ ] Share a book with your friends via Link
 - [ ] Share a book with your friends via System-level share target picker
 - [ ] Search a book by Title and Author
 
