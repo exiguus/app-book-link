@@ -100,6 +100,10 @@ importers:
         version: 5.0.1(typescript@5.1.6)
 
   apps/nuxt:
+    dependencies:
+      node-isbn:
+        specifier: ^1.6.1
+        version: 1.6.1
     devDependencies:
       '@nuxt/content':
         specifier: ^2.7.2
@@ -119,6 +123,9 @@ importers:
       '@types/node':
         specifier: ^18.17.3
         version: 18.17.3
+      '@types/node-isbn':
+        specifier: ^1.6.2
+        version: 1.6.2
       '@vue/test-utils':
         specifier: ^2.4.1
         version: 2.4.1(vue@3.3.4)
@@ -2484,6 +2491,15 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
+  /@types/node-isbn@1.6.2:
+    resolution: {integrity: sha512-0PYHetooCebnXB6lGRiwMH/4AuMjFYs/eeTdKzWxmT+mc4/zoNCA9NfQYpJEX0p01cILGiGJm1djbE87YtFubg==}
+    dependencies:
+      '@types/node': 18.17.3
+      axios: 0.21.4
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
   /@types/node@18.17.3:
     resolution: {integrity: sha512-2x8HWtFk0S99zqVQABU9wTpr8wPoaDHZUcAkoTKH+nL7kPv3WUI9cRi/Kk5Mz4xdqXSqTkKP7IWNoQQYCnDsTA==}
     dev: true
@@ -3343,6 +3359,13 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /axios@0.21.4:
+    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
 
   /axios@0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
@@ -5813,7 +5836,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: true
 
   /for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -8985,6 +9007,14 @@ packages:
   /node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
     dev: true
+
+  /node-isbn@1.6.1:
+    resolution: {integrity: sha512-OHxpA5xfi7K0iTbqxPpeGlueRA3dasHDRwaKkCWkscLoaKvI8e4mn8yfHrYL0zCJhWq8A2cdrZNbAsHvm7ASwg==}
+    dependencies:
+      axios: 0.21.4
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}

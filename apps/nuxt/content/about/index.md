@@ -1,6 +1,6 @@
 # About <strong class="green">Book_Link</strong>
 
-<strong class="green">Book_Link</strong> is a App to search a Book by _ISBN_ or _Title_ and _Author_.
+<strong class="green">Book*Link</strong> is a App to search a Book by \_ISBN* or _Title_ and _Author_.
 And retrieve the book cover and description.
 Share the book with your friends.
 
