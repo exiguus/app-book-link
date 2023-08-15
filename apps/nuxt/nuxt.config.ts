@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     '/': { prerender: true }
   },
   // https://nuxt.com/docs/guide/concepts/modules#the-modules-property
-  modules: ['@nuxt/content', '@vite-pwa/nuxt'],
+  modules: ['@nuxt/content', process.env.NODE_ENV === 'development' ? undefined : '@vite-pwa/nuxt'],
   content: {
     // https://content.nuxtjs.org/api/configuration
     // https://content.nuxtjs.org/
@@ -79,7 +79,50 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      runtimeCaching: [
+        {
+          urlPattern: /^api\/book\/.*/i,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'api-book-cache',
+            expiration: {
+              maxEntries: 128,
+              maxAgeSeconds: 60 * 60 * 24 * 30 // <== 30 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+        {
+          urlPattern: /^api\/_content\/.*/i,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'api-content-cache',
+            expiration: {
+              maxEntries: 128,
+              maxAgeSeconds: 60 * 60 * 24 * 10 // <== 10 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        },
+        {
+          handler: 'NetworkOnly',
+          urlPattern: /\/api\/.*/,
+          method: 'POST',
+          options: {
+            backgroundSync: {
+              name: 'api-sync',
+              options: {
+                maxRetentionTime: 24 * 60
+              }
+            }
+          }
+        }
+      ]
     },
     client: {
       installPrompt: true,

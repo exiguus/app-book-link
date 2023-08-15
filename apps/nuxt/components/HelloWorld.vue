@@ -24,12 +24,12 @@
               defaultValue="978-0-345-39180-3"
               placeholder="ISBN, Title"
               required
-              pattern="\d{9}[\d|X]|(\d{3}-){2}\d{1,3}-[\d|X]"
+              pattern="[0-9]{9}[[0-9]|X]|([0-9]{3}\-){2}[0-9]{1,3}\-[[0-9]|X]"
             />
           </label>
         </p>
         <p>
-          <button type="submit" @click="submit">Search</button>
+          <button type="submit" @click.prevent="submit">Search</button>
         </p>
       </fieldset>
       <p>Use your Camera to scan and paste the code.</p>
@@ -46,9 +46,9 @@
           </ul>
         </nav>
       </div>
-      <div v-if="book.pending">Loading</div>
-      <div v-if="book.error">{{ book.error }}</div>
-      <div v-if="!book.data && !book.pending && !book.error">No data</div>
+      <div v-if="book.pending" class="loading">Loading</div>
+      <div v-if="book.error" class="error">{{ book.error }}</div>
+      <div v-if="!book.data && !book.pending && !book.error" class="no-data">No data</div>
     </div>
   </div>
 </template>
@@ -64,6 +64,7 @@ const searchInput = ref<HTMLInputElement>()
 const resultText = ref<HTMLDivElement>()
 const book = ref()
 const bookSearch = async ({ value }: { value: string }) => {
+  console.log(value)
   const url = computed(() => `/api/book/${value}`)
   const { data, pending, error } = await useFetch(url)
   return { data, pending, error }
@@ -109,9 +110,14 @@ function copy() {
   justify-content: center;
   align-items: center;
 }
-
 .result-item-nav ul li {
   list-style: none;
+}
+
+.loading,
+.error,
+.no-data {
+  min-height: 8rem;
 }
 .sr-only {
   position: absolute;

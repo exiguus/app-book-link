@@ -22,7 +22,9 @@
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     </Head>
-    <VitePwaManifest />
+    <template v-if="production">
+      <VitePwaManifest />
+    </template>
     <div class="page">
       <PageHeader />
       <NuxtLoadingIndicator />
@@ -38,6 +40,7 @@
 import '@/assets/main.css'
 
 const date = useAppConfig().buildDate
+const production = process.env.NODE_ENV === 'production'
 </script>
 
 <script lang="ts">

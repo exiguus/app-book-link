@@ -11,7 +11,7 @@ export type BookSearchItem = {
     timestamp: number
     error?: string
   }
-  data: Book
+  data?: Book
   res?: unknown
 }
 

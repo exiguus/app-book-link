@@ -12,7 +12,7 @@ export const providers = {
 }
 
 export function generateResponse(result: BookSearch): BookResponse {
-  const hasError = Array.isArray(result) && result.some((book) => book.search.error !== undefined)
+  const hasError = Array.isArray(result) && result.every((book) => book.search.error !== undefined)
   if (hasError) {
     return {
       message: 'error',
@@ -24,13 +24,26 @@ export function generateResponse(result: BookSearch): BookResponse {
   } else {
     return {
       message: 'success',
-      data: {
-        title: result.books[0].data.title,
-        authors: result.books[0].data.authors,
-        publisher: result.books[0].data.publisher,
-        isbn: result.books[0].search.text
-      },
-      debug: result
+      data: result.books[0].data
+        ? {
+            title: result.books[0].data.title,
+            authors: result.books[0].data.authors,
+            publisher: result.books[0].data.publisher,
+            isbn: result.books[0]?.search.text
+          }
+        : {
+            title: 'Unknown',
+            authors: [],
+            publisher: 'Unknown',
+            isbn: result.books[0]?.search.text
+          },
+      error: !result.books[0].data
+        ? {
+            title: 'Book not found',
+            message: `Book not found for ${result.books[0].search.text}`
+          }
+        : undefined,
+      debug: process.env.NODE_ENV === 'development' ? result : undefined
     }
   }
 }
@@ -76,11 +89,7 @@ export async function getResults(resolve: string, timestamp: number): Promise<Bo
                 authors: res.authors,
                 publisher: res.publisher
               }
-            : {
-                title: 'Unknown',
-                authors: [],
-                publisher: 'Unknown'
-              }
+            : undefined
 
           return {
             search: {
