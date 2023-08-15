@@ -18,6 +18,9 @@
       <Meta property="og:image" content="https://book-link.vercel.app/book_link.png" />
       <Meta property="og:url" content="https://book-link.vercel.app/" />
       <Meta property="og:site_name" content="book_link" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     </Head>
     <VitePwaManifest />
     <div class="page">

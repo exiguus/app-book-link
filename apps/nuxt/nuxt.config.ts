@@ -47,16 +47,33 @@ export default defineNuxtConfig({
     buildDate: new Date().toISOString()
   },
   pwa: {
-    registerType: 'autoUpdate',
     manifest: {
-      name: 'book_link: Search for books by ISBN and share the results.',
+      name: 'Digital Book Link',
       short_name: 'book_link',
+      description: 'Search for books by ISBN and share the results.',
       theme_color: '#00bd7e',
       icons: [
         {
-          src: 'book_share.png',
-          sizes: '256x256',
+          src: 'pwa-64x64.png',
+          sizes: '64x64',
           type: 'image/png'
+        },
+        {
+          src: 'pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any'
+        },
+        {
+          src: 'maskable-icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable'
         }
       ]
     },
