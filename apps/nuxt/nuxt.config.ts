@@ -48,10 +48,21 @@ export default defineNuxtConfig({
   },
   pwa: {
     manifest: {
+      id: '/',
       name: 'Digital Book Link',
       short_name: 'book_link',
       description: 'Search for books by ISBN and share the results.',
       theme_color: '#00bd7e',
+      share_target: {
+        action: '/',
+        method: 'GET',
+        enctype: 'application/x-www-form-urlencoded',
+        params: {
+          text: 'share_text',
+          title: 'share_title',
+          url: 'share_url'
+        }
+      },
       icons: [
         {
           src: 'pwa-64x64.png',
