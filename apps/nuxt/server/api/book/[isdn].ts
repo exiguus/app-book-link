@@ -1,10 +1,20 @@
 import { BookApiResponse } from './types'
-import { cache, getResults, generateResponse } from './utils'
+import { cache, getResults, generateResponse, isValidSearch } from './utils'
 
 export default defineEventHandler(async (event): Promise<BookApiResponse> => {
   try {
     const defaultSearch = '978-0-345-39182-1'
-    const search = getRouterParam(event, 'isdn') || defaultSearch
+    const search = (getRouterParam(event, 'isdn') || defaultSearch).trim()
+    if (!isValidSearch(search)) {
+      return {
+        message: 'error',
+        error: {
+          title: 'Invalid ISBN search parameter',
+          message:
+            'Invalid search parameter. Please try again. Format is ISBN-10 or ISBN-13. For Example: 978-0-345-39182-1.'
+        }
+      }
+    }
     const timestamp = Date.now()
     const result = await getResults(search, timestamp)
 

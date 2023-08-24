@@ -16,7 +16,7 @@
             defaultValue="978-0-345-39180-3"
             placeholder="ISBN, Title"
             required
-            pattern="[0-9]{9}[[0-9]|X]|([0-9]{3}\-){2}[0-9]{1,3}\-[[0-9]|X]"
+            :pattern="isbnRegExpString"
           />
         </label>
       </p>
@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import SrOnly from './SrOnly.vue'
+import { isbnRegExpString } from '@/server/api/book/utils'
 
 const props = defineProps<{
   searchValue: string
