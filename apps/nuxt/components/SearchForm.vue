@@ -29,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import SrOnly from './SrOnly.vue'
 import { isbnRegExpString } from '@/server/api/book/utils'
 

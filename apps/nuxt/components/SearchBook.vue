@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
 import SearchForm from './SearchForm.vue'
 import SearchResults from './SearchResults.vue'
 import { Book, BookApiResponse, isBookData, isErrorData } from '@/server/api/book/types'
@@ -65,7 +66,7 @@ function clear() {
 }
 
 function share() {
-  if (!bookResults || !bookResults.value?.data || !navigator) return
+  if (!bookResults.value || !bookResults.value?.data || !navigator) return
   if (navigator.share) {
     navigator.share({
       title: `book_link: Share ${bookResults.value.data.title}`,
@@ -81,7 +82,7 @@ function share() {
 }
 
 function copy() {
-  if (!bookResults || !bookResults.value?.data || !navigator) return
+  if (!bookResults.value || !bookResults.value?.data || !navigator) return
   const textContent = `Title: ${bookResults.value.data.title}
 Author: ${bookResults.value.data.authors.join(', ')}
 Publisher: ${bookResults.value.data.publisher}
