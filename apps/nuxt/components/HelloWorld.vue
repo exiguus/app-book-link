@@ -1,13 +1,21 @@
 <template>
   <div class="greetings">
     <div class="header">
-      <img class="logo" alt="book_link logo" src="@/assets/logo.svg" width="64" height="64" />
-      <h1 class="green">
-        {{ msg }}
-      </h1>
-      <h3>Use <strong class="green">book_link</strong> to share it</h3>
+      <div class="logo-claim">
+        <img class="logo" alt="book_link logo" src="@/assets/logo.svg" width="64" height="64" />
+        <h1 class="green">
+          {{ msg }}
+        </h1>
+        <h3 class="use-claim">
+          Use <strong class="green">book_link</strong> to find and share your book
+        </h3>
+      </div>
     </div>
-    <SearchBook />
+    <div class="search">
+      <div class="search-book">
+        <SearchBook />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,11 +27,6 @@ defineProps<{
 </script>
 
 <style scoped>
-.logo {
-  display: block;
-  width: 64px;
-}
-
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
@@ -36,8 +39,18 @@ h3 {
   margin-bottom: 1em;
 }
 
-.header,
-form {
+.header {
+  position: sticky;
+  top: -7.5rem;
+  background-color: var(--color-background);
+}
+
+.header .logo {
+  display: block;
+  width: 64px;
+}
+
+.header .logo-claim {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,29 +58,19 @@ form {
   padding: 0 1rem;
 }
 
-form {
-  margin-bottom: 1rem;
+.search {
+  position: relative;
+  background-color: var(--color-background);
+  z-index: -1;
 }
 
-fieldset {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border: none;
-  margin-bottom: 1rem;
+.search-book {
+  position: sticky;
+  top: 20rem;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
+.greetings {
+  position: sticky;
+  top: 1rem;
 }
 </style>

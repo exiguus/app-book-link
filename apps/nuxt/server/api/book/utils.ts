@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import isbn from 'node-isbn'
-import { BookSearch, BookApiResponse, isBook } from './types'
+import axios from 'axios'
+import { BookSearch, BookApiResponse, isBook, isBookWithImageLinks } from './types'
 import { RuntimeCache } from '@/libs/RuntimeCache.class'
 export const cache = new RuntimeCache()
 export const providers = {
@@ -29,6 +30,11 @@ export function generateResponse(result: BookSearch): BookApiResponse {
             title: result.books[0].data.title,
             authors: result.books[0].data.authors,
             publisher: result.books[0].data.publisher,
+            image: result.books[0].data.image
+              ? {
+                  thumb: result.books[0].data.image.thumb
+                }
+              : undefined,
             isbn: result.books[0]?.search.text
           }
         : {
@@ -84,11 +90,36 @@ export async function getResults(resolve: string, timestamp: number): Promise<Bo
               return err
             })
 
+          const images: {
+            origin: string | null
+            base64?: string
+          } = {
+            origin: null
+          }
+
+          if (isBookWithImageLinks(res)) {
+            if (res.imageLinks.thumbnail) {
+              images.origin = res.imageLinks.thumbnail
+            } else if (res.imageLinks.smallThumbnail) {
+              images.origin = res.imageLinks.smallThumbnail
+            }
+          }
+
+          if (images.origin) {
+            const image = await axios.get(images.origin, { responseType: 'arraybuffer' })
+            const imageBase64 = Buffer.from(image.data).toString('base64')
+            images.base64 = `data:${image.headers['content-type']};base64,${imageBase64}`
+          }
           const data = isBook(res)
             ? {
                 title: res.title,
                 authors: res.authors,
                 publisher: res.publisher,
+                image: images.base64
+                  ? {
+                      thumb: images.base64
+                    }
+                  : undefined,
                 isbn: resolve
               }
             : undefined

@@ -15,13 +15,6 @@ import HelloWorld from './HelloWorld.vue'
 </script>
 
 <style scoped>
-pre {
-  background-color: var(--color-bg);
-  padding: 1rem;
-  max-width: 480px;
-  overflow-x: auto;
-}
-
 .search {
   display: flex;
   flex-direction: column;
@@ -29,6 +22,11 @@ pre {
   justify-content: center;
   align-self: center;
   margin-bottom: 2rem;
+}
+
+header {
+  padding-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 nav {
@@ -63,6 +61,10 @@ nav a:first-of-type {
   .search {
     margin-top: -2rem;
     margin-right: 1rem;
+  }
+
+  header {
+    margin-bottom: 0;
   }
 
   nav {

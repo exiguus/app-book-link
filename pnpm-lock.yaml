@@ -113,7 +113,7 @@ importers:
         version: 0.8.0(nuxt@3.6.5)(vite@4.4.9)
       '@nuxt/test-utils':
         specifier: ^3.6.5
-        version: 3.6.5(vitest@0.34.1)(vue@3.3.4)
+        version: 3.6.5(@jest/globals@29.6.2)(vitest@0.34.1)(vue@3.3.4)
       '@nuxtjs/eslint-config-typescript':
         specifier: ^12.0.0
         version: 12.0.0(eslint@8.32.0)(typescript@5.1.6)
@@ -135,6 +135,9 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.1
         version: 2.4.1(vue@3.3.4)
+      axios:
+        specifier: ^1.4.0
+        version: 1.4.0
       eslint:
         specifier: ^8.32.0
         version: 8.32.0
@@ -2741,7 +2744,7 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/test-utils@3.6.5(vitest@0.34.1)(vue@3.3.4):
+  /@nuxt/test-utils@3.6.5(@jest/globals@29.6.2)(vitest@0.34.1)(vue@3.3.4):
     resolution: {integrity: sha512-excgW7fTOxGaIpLmiFo3hCD56Z2/b1hqpn6Wvdw5wZSHdrReke/Ka23Ut+7P+bBiciLrNrhpk7M3ORCNRfJNDA==}
     engines: {node: ^14.18.0 || >=16.10.0}
     peerDependencies:
@@ -2757,6 +2760,7 @@ packages:
       vitest:
         optional: true
     dependencies:
+      '@jest/globals': 29.6.2
       '@nuxt/kit': 3.6.5
       '@nuxt/schema': 3.6.5
       consola: 3.2.3
@@ -4293,6 +4297,16 @@ packages:
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
+  /axios@1.4.0:
+    resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
+    dependencies:
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: true
@@ -11380,6 +11394,10 @@ packages:
 
   /protocols@2.0.1:
     resolution: {integrity: sha512-/XJ368cyBJ7fzLMwLKv1e4vLxOju2MNAIokcr7meSaNcVbWz/CPcW22cP04mwxOErdA5mwjA8Q6w/cdAQxVn7Q==}
+    dev: true
+
+  /proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: true
 
   /prr@1.0.1:

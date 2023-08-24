@@ -9,6 +9,7 @@
     :share="share"
     :clear="clear"
     :copy="copy"
+    :copy-image="copyImage"
   />
 </template>
 
@@ -91,6 +92,34 @@ ISBN: ${bookResults.value.data.isbn}
 `
   navigator.clipboard.writeText(textContent)
   infoText.value = 'The book information was copied to your clipboard'
+}
+
+function copyImage() {
+  if (!bookResults.value || !bookResults.value?.data || !navigator) return
+  if (bookResults.value.data.image) {
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    const img = new Image()
+    img.crossOrigin = 'Anonymous'
+    img.src = bookResults.value.data.image.thumb
+    img.onload = () => {
+      canvas.width = img.width
+      canvas.height = img.height
+      ctx?.drawImage(img, 0, 0)
+      canvas.toBlob((blob) => {
+        if (blob) {
+          navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ])
+          infoText.value = 'The book image was copied to your clipboard'
+        } else {
+          infoText.value = 'The book image could not be copied to your clipboard'
+        }
+      })
+    }
+  }
 }
 
 function searchBySharedUrl(url: URL) {
