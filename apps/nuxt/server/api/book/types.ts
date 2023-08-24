@@ -2,6 +2,9 @@ export type Book = {
   title: string
   authors: string[]
   publisher: string
+  image?: {
+    thumb: string
+  }
   isbn: string
 }
 
@@ -40,6 +43,21 @@ export const isBook = (res: unknown): res is Book =>
   Array.isArray((res as Book).authors) &&
   (res as Book).authors.every((author) => typeof author === 'string') &&
   typeof (res as Book).publisher === 'string'
+
+export const isBookWithImageLinks = (
+  res: unknown
+): res is Book & {
+  imageLinks: {
+    thumbnail?: string
+    smallThumbnail?: string
+  }
+} =>
+  isBook(res) &&
+  'imageLinks' in res &&
+  typeof res.imageLinks === 'object' &&
+  res.imageLinks !== null &&
+  (('thumbnail' in res.imageLinks && typeof res.imageLinks.thumbnail === 'string') ||
+    ('smallThumbnail' in res.imageLinks && typeof res.imageLinks.smallThumbnail === 'string'))
 
 export const isBookData = (data: unknown): data is BookApiResponse['data'] =>
   typeof data === 'object' &&

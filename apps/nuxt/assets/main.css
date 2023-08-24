@@ -13,10 +13,16 @@ a,
   }
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 input {
   width: 100%;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-primary);
   border-radius: 0.25rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -34,7 +40,7 @@ button {
   border-radius: 0.25rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--color-text);
+  color: var(--color-background);
   background-color: var(--color-primary);
   transition:
     border-color 0.15s ease-in-out,
@@ -44,6 +50,44 @@ button {
 
 button::hover {
   background-color: var(--color-primary-hover);
+}
+
+button.secondary {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+button.secondary::hover {
+  background-color: var(--color-background-hover);
+}
+
+button svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+button.icon {
+  padding: 0.5rem;
+  line-height: 0.5;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.form-group p:first-child label input {
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+.form-group p + p button {
+  border-radius: 0 0.25em 0.25em 0;
+  padding: 0.5rem 2rem;
 }
 
 .rte h1 {
