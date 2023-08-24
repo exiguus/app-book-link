@@ -2,6 +2,7 @@ export type Book = {
   title: string
   authors: string[]
   publisher: string
+  isbn: string
 }
 
 export type BookSearchItem = {
@@ -19,7 +20,7 @@ export type BookSearch = {
   books: Array<BookSearchItem>
 }
 
-export type BookResponse = {
+export type BookApiResponse = {
   message: 'success' | 'error'
   data?: Book & { isbn: string }
   error?: {
@@ -39,3 +40,19 @@ export const isBook = (res: unknown): res is Book =>
   Array.isArray((res as Book).authors) &&
   (res as Book).authors.every((author) => typeof author === 'string') &&
   typeof (res as Book).publisher === 'string'
+
+export const isBookData = (data: unknown): data is BookApiResponse['data'] =>
+  typeof data === 'object' &&
+  data !== null &&
+  'title' in data &&
+  typeof data.title === 'string' &&
+  'authors' in data &&
+  Array.isArray(data.authors) &&
+  data.authors.every((author) => typeof author === 'string') &&
+  'publisher' in data &&
+  typeof data.publisher === 'string' &&
+  'isbn' in data &&
+  typeof data.isbn === 'string'
+
+export const isErrorData = (data: unknown): data is BookApiResponse['error'] =>
+  typeof data === 'object' && data !== null && 'message' in data && typeof data.message === 'string'
