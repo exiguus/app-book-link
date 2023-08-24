@@ -10,8 +10,8 @@ Try it: https://book-link.vercel.app/
 
 - [x] Search a book by ISBN
 - [x] Copy the results to the clipboard
-- [ ] Share a book with your friends via Link
-- [ ] Share a book with your friends via System-level share target picker
+- [x] Share a book with your friends via Link
+- [x] Share a book with your friends via System-level share target picker
 - [ ] Search a book by Title and Author
 
 ## Motivation

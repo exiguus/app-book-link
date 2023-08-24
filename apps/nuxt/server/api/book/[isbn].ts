@@ -4,7 +4,7 @@ import { cache, getResults, generateResponse, isValidSearch } from './utils'
 export default defineEventHandler(async (event): Promise<BookApiResponse> => {
   try {
     const defaultSearch = '978-0-345-39182-1'
-    const search = (getRouterParam(event, 'isdn') || defaultSearch).trim()
+    const search = (getRouterParam(event, 'isbn') || defaultSearch).trim()
     if (!isValidSearch(search)) {
       return {
         message: 'error',
