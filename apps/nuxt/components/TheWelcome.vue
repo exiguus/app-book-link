@@ -15,7 +15,7 @@ import CopyIcon from './icons/IconCopy.vue'
     <template #heading>Search</template>
     <template #task>
       <p>
-        Enter a International Standard Book Number (ISDN). A 13-digit ISBN,
+        Enter a International Standard Book Number (ISBN). A 13-digit ISBN,
         <code>978-0-345-39180-3</code>, usually represented by an EAN-13 bar code on the back of
         your book.
       </p>
@@ -26,10 +26,10 @@ import CopyIcon from './icons/IconCopy.vue'
     <template #info>
       <h3>Progressiv Web App (PWA)</h3>
       <p>
-        If you install this PWA on your phone, you can scan the ISDN code from the back of your book
+        If you install this PWA on your phone, you can scan the ISBN code from the back of your book
         with your Camera and directly share it to this app.
       </p>
-      <h3>International Standard Book Number (ISDN)</h3>
+      <h3>International Standard Book Number (ISBN)</h3>
       <p>
         For more than thirty years, ISBNs were 10 digits long. On January 1, 2007 the ISBN system
         switched to a 13-digit format.

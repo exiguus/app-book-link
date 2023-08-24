@@ -5,6 +5,8 @@
     :pending="bookResults.pending"
     :error="bookResults.error"
     :data="bookResults.data"
+    :info-text="infoText"
+    :share="share"
     :clear="clear"
     :copy="copy"
   />
@@ -16,7 +18,7 @@ import SearchResults from './SearchResults.vue'
 import { Book, BookApiResponse, isBookData, isErrorData } from '@/server/api/book/types'
 
 const searchText = ref<string>('')
-const resultText = ref<HTMLDivElement>()
+const infoText = ref<string>()
 
 export type BookResults = {
   data: Book | null
@@ -43,6 +45,11 @@ async function submit() {
       error: errorData?.message || error.value,
       data: bookData || null
     }
+    if (bookData) {
+      const currentUrl = new URL(window.location.href)
+      currentUrl.searchParams.set('share_text', bookData.isbn)
+      window.history.pushState({}, '', currentUrl.toString())
+    }
   } else {
     bookResults.value = {
       pending: false,
@@ -57,11 +64,31 @@ function clear() {
   bookResults.value = null
 }
 
-function copy() {
-  const textContent = resultText.value?.textContent
-  if (textContent) {
-    navigator.clipboard.writeText(textContent)
+function share() {
+  if (!bookResults || !bookResults.value?.data || !navigator) return
+  if (navigator.share) {
+    navigator.share({
+      title: `book_link: Share ${bookResults.value.data.title}`,
+      text: `${bookResults.value.data.title} by ${bookResults.value.data.authors.join(
+        ', '
+      )}} - Publisher: ${bookResults.value.data.publisher} - ISBN: ${bookResults.value.data.isbn}`,
+      url: window.location.href
+    })
+  } else {
+    navigator.clipboard.writeText(window.location.href)
+    infoText.value = 'The link was copied to your clipboard'
   }
+}
+
+function copy() {
+  if (!bookResults || !bookResults.value?.data || !navigator) return
+  const textContent = `Title: ${bookResults.value.data.title}
+Author: ${bookResults.value.data.authors.join(', ')}
+Publisher: ${bookResults.value.data.publisher}
+ISBN: ${bookResults.value.data.isbn}
+`
+  navigator.clipboard.writeText(textContent)
+  infoText.value = 'The book information was copied to your clipboard'
 }
 
 function searchBySharedUrl(url: URL) {

@@ -1,14 +1,16 @@
 <template>
   <div class="results">
     <div v-if="!(isPending || error) && data" class="results-item">
-      <div ref="resultText" class="result-item" @doubleClick="copy">
+      <div class="result-item" @doubleClick="copy">
         <SearchResultItem :data="data" />
       </div>
       <nav class="result-item-nav">
         <ul>
           <li><button type="reset" @click="clear">Clear</button></li>
           <li><button type="button" @click="copy">Copy</button></li>
+          <li><button type="button" @click="share">Share</button></li>
         </ul>
+        <p v-if="infoText">{{ infoText }}</p>
       </nav>
     </div>
     <div v-if="isPending" class="loading">Loading...</div>
@@ -28,7 +30,9 @@ const props = defineProps<{
   } | null
   pending: boolean
   error: string | null
+  infoText?: string
   copy: () => void
+  share: () => void
   clear: () => void
 }>()
 defineEmits(['update:book'])
@@ -50,6 +54,10 @@ setTimeout(() => {
 }
 
 .result-item-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 
@@ -63,6 +71,12 @@ setTimeout(() => {
 .result-item-nav ul li {
   list-style: none;
   margin: 0 0.5rem;
+}
+
+.result-item-nav p {
+  max-width: 240px;
+  padding: 1rem;
+  text-align: center;
 }
 
 .result-item,
