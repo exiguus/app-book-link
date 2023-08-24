@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import isbn from 'node-isbn'
-import { BookSearch, BookResponse, isBook } from './types'
+import { BookSearch, BookApiResponse, isBook } from './types'
 import { RuntimeCache } from '@/libs/RuntimeCache.class'
 export const cache = new RuntimeCache()
 export const providers = {
@@ -11,7 +11,7 @@ export const providers = {
   // WORLDCAT: 'worldcat' as const
 }
 
-export function generateResponse(result: BookSearch): BookResponse {
+export function generateResponse(result: BookSearch): BookApiResponse {
   const hasError = Array.isArray(result) && result.every((book) => book.search.error !== undefined)
   if (hasError) {
     return {
@@ -63,7 +63,8 @@ export async function getResults(resolve: string, timestamp: number): Promise<Bo
           data: {
             title: 'Unknown',
             authors: [],
-            publisher: 'Unknown'
+            publisher: 'Unknown',
+            isbn: resolve
           }
         }
       ]
@@ -87,7 +88,8 @@ export async function getResults(resolve: string, timestamp: number): Promise<Bo
             ? {
                 title: res.title,
                 authors: res.authors,
-                publisher: res.publisher
+                publisher: res.publisher,
+                isbn: resolve
               }
             : undefined
 

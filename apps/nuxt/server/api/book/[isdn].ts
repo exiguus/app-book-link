@@ -1,7 +1,7 @@
-import { BookResponse } from './types'
+import { BookApiResponse } from './types'
 import { cache, getResults, generateResponse } from './utils'
 
-export default defineEventHandler(async (event): Promise<BookResponse> => {
+export default defineEventHandler(async (event): Promise<BookApiResponse> => {
   try {
     const defaultSearch = '978-0-345-39182-1'
     const search = getRouterParam(event, 'isdn') || defaultSearch

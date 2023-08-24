@@ -33,8 +33,9 @@ pre {
 
 nav {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: middle;
+  align-items: center;
   width: 100%;
   font-size: 12px;
   margin-bottom: 2rem;

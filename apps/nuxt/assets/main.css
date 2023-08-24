@@ -45,3 +45,20 @@ button {
 button::hover {
   background-color: var(--color-primary-hover);
 }
+
+.rte h1 {
+  font-size: 1.25em;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--color-heading);
+}
+
+.rte p,
+.rte ul {
+  margin-bottom: 1rem;
+}
+
+.rte ul li {
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
