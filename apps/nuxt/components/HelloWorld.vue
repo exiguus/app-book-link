@@ -1,7 +1,7 @@
 <template>
   <div class="greetings">
     <div class="header">
-      <img class="logo" alt="book_link logo" src="@/assets/logo.svg" />
+      <img class="logo" alt="book_link logo" src="@/assets/logo.svg" width="64" height="64" />
       <h1 class="green">
         {{ msg }}
       </h1>
