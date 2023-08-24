@@ -70,9 +70,10 @@ function share() {
   if (navigator.share) {
     navigator.share({
       title: `book_link: Share ${bookResults.value.data.title}`,
-      text: `${bookResults.value.data.title} by ${bookResults.value.data.authors.join(
-        ', '
-      )}} - Publisher: ${bookResults.value.data.publisher} - ISBN: ${bookResults.value.data.isbn}`,
+      text: `${bookResults.value.data.title} by ${bookResults.value.data.authors.join(', ')}
+Publisher: ${bookResults.value.data.publisher}
+ISBN: ${bookResults.value.data.isbn}
+`,
       url: window.location.href
     })
   } else {
