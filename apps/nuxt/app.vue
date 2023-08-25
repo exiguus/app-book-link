@@ -26,13 +26,24 @@
       <VitePwaManifest />
     </template>
     <div class="page">
-      <PageHeader />
-      <NuxtLoadingIndicator />
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <div>
+        <header>
+          <PageHeader />
+        </header>
+        <main>
+          <SearchBook />
+        </main>
+      </div>
+      <aside>
+        <NuxtLoadingIndicator />
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </aside>
     </div>
-    <PageFooter />
+    <footer>
+      <PageFooter />
+    </footer>
   </div>
 </template>
 

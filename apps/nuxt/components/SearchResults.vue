@@ -1,6 +1,6 @@
 <template>
   <div class="results">
-    <div v-if="!(isPending || error) && data" class="results-item">
+    <div v-if="!(pending || error) && data" class="results-item">
       <div class="result-item">
         <SearchResultItem :data="data" :copy="copy" :copy-image="copyImage" />
       </div>
@@ -31,9 +31,9 @@
         <p v-if="infoText">{{ infoText }}</p>
       </nav>
     </div>
-    <div v-if="isPending" class="loading">Loading...</div>
-    <div v-if="!isPending && error" class="error">{{ error }}</div>
-    <div v-if="!data && !isPending && !error" class="no-data">No data</div>
+    <div v-if="pending" class="loading">Loading...</div>
+    <div v-if="!pending && error" class="error">{{ error }}</div>
+    <div v-if="!data && !pending && !error" class="no-data">No data</div>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ import IconCopy from './icons/IconCopy.vue'
 import IconClear from './icons/IconClear.vue'
 
 import { Book } from '@/server/api/book/types'
-const props = defineProps<{
+defineProps<{
   data: Book | null
   pending: boolean
   error: string | null
@@ -55,13 +55,6 @@ const props = defineProps<{
   clear: () => void
 }>()
 defineEmits(['update:book'])
-
-const isPending = ref<boolean>(true)
-
-// focus the user on the result quickly
-setTimeout(() => {
-  isPending.value = props.pending
-}, 300)
 </script>
 
 <style scoped>
@@ -79,6 +72,8 @@ setTimeout(() => {
 }
 
 .result-item-nav {
+  position: sticky;
+  top: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,9 +111,10 @@ setTimeout(() => {
 
 .result-item {
   position: sticky;
-  top: 4rem;
+  top: 2rem;
   border: 1px solid var(--color-text);
   background-color: var(--color-background);
+  z-index: 2;
 }
 
 .result-item,

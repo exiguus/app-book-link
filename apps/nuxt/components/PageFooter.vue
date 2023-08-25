@@ -1,13 +1,11 @@
 <template>
-  <footer>
-    <div class="rte">
-      <ContentDoc path="/footer" />
-    </div>
-  </footer>
+  <div class="footer rte">
+    <ContentDoc path="/footer" />
+  </div>
 </template>
 
 <style>
-footer .rte p {
+.footer.rte p {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;

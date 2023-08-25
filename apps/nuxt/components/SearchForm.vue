@@ -54,19 +54,22 @@ const value = computed({
 <style scoped>
 form {
   position: relative;
-  z-index: -1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
   background-color: var(--color-background);
+}
+
+form > p {
+  margin-top: -1rem;
+  padding: 1rem 0;
+  text-align: center;
 }
 
 fieldset {
   position: sticky;
-  top: 3rem;
+  top: 5rem;
 }
 </style>

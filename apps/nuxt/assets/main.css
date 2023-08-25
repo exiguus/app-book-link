@@ -78,6 +78,7 @@ button.icon {
   align-items: center;
   width: 100%;
   border: none;
+  padding: 2px;
   margin-bottom: 1rem;
 }
 

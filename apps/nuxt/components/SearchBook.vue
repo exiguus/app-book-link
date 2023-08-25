@@ -1,5 +1,7 @@
 <template>
-  <SearchForm v-model:search-value="searchText" :submit="submit" />
+  <client-only>
+    <SearchForm v-model:search-value="searchText" :submit="submit" />
+  </client-only>
   <SearchResults
     v-if="bookResults"
     :pending="bookResults.pending"
@@ -36,7 +38,12 @@ const bookSearch = async ({ value }: { value: string }) => {
 }
 
 async function submit() {
-  bookResults.value = null
+  if (!searchText.value || searchText.value === bookResults.value?.data?.isbn) return
+  bookResults.value = {
+    pending: true,
+    error: null,
+    data: null
+  }
   const newValue = searchText?.value?.length > 0 ? searchText.value : null
   if (newValue) {
     const { pending, error, data } = await bookSearch({ value: newValue })
