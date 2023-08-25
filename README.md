@@ -108,6 +108,7 @@ Testing involves various methods and techniques to assess the quality and functi
 - [ ] Performance Testing
 - [x] Accessibility Testing
 - [x] Security Testing
+- [x] Performance Baseline [WebPageTest](https://www.webpagetest.org/result/230825_BiDc3R_11K/) and [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-book-link-vercel-app/g6kh82pg2j?form_factor=mobile)
 
 Solutions: <https://jestjs.io/>, <https://testing-library.com/>, <https://playwright.dev/> and <https://github.com/>
 

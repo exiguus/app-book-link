@@ -21,10 +21,8 @@
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+      <VitePwaManifest v-if="isProduction || config.public.pwa.enable" />
     </Head>
-    <template v-if="production">
-      <VitePwaManifest />
-    </template>
     <div class="page">
       <div>
         <header>
@@ -51,7 +49,9 @@
 import '@/assets/main.css'
 
 const date = useAppConfig().buildDate
-const production = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
+const config = useRuntimeConfig()
+
 useHead({
   htmlAttrs: {
     lang: 'en'

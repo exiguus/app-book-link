@@ -6,15 +6,33 @@ export default defineNuxtConfig({
   typescript: {
     strict: true
   },
+  runtimeConfig: {
+    public: {
+      pwa: {
+        enable: process.env.NUXT_PWA_ENABLED === 'enabled'
+      },
+      api: {
+        book: {
+          url: process.env.NUXT_BOOK_API_URL
+        }
+      }
+    }
+  },
   build: {
     analyze: true
   },
   // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/about': { prerender: true }
   },
   // https://nuxt.com/docs/guide/concepts/modules#the-modules-property
-  modules: ['@nuxt/content', process.env.NODE_ENV === 'development' ? undefined : '@vite-pwa/nuxt'],
+  modules: [
+    '@nuxt/content',
+    process.env.NODE_ENV === 'production' || process.env.NUXT_PWA_ENABLED === 'enable'
+      ? '@vite-pwa/nuxt'
+      : undefined
+  ],
   content: {
     // https://content.nuxtjs.org/api/configuration
     // https://content.nuxtjs.org/
@@ -53,6 +71,7 @@ export default defineNuxtConfig({
       short_name: 'book_link',
       description: 'Search for books by ISBN and share the results.',
       theme_color: '#00bd7e',
+      background_color: '#282828',
       share_target: {
         action: '/',
         method: 'GET',
@@ -93,8 +112,8 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
       runtimeCaching: [
         {
-          urlPattern: /^api\/book\/.*/i,
-          handler: 'CacheFirst',
+          urlPattern: /\/api\/book\/.*/,
+          handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'api-book-cache',
             expiration: {
@@ -107,8 +126,8 @@ export default defineNuxtConfig({
           }
         },
         {
-          urlPattern: /^api\/_content\/.*/i,
-          handler: 'CacheFirst',
+          urlPattern: /\/api\/_content\/.*/,
+          handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'api-content-cache',
             expiration: {
@@ -117,19 +136,6 @@ export default defineNuxtConfig({
             },
             cacheableResponse: {
               statuses: [0, 200]
-            }
-          }
-        },
-        {
-          handler: 'NetworkOnly',
-          urlPattern: /\/api\/.*/,
-          method: 'POST',
-          options: {
-            backgroundSync: {
-              name: 'api-sync',
-              options: {
-                maxRetentionTime: 24 * 60
-              }
             }
           }
         }

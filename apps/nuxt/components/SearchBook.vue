@@ -21,6 +21,7 @@ import SearchForm from './SearchForm.vue'
 import SearchResults from './SearchResults.vue'
 import { Book, BookApiResponse, isBookData, isErrorData } from '@/server/api/book/types'
 
+const config = useRuntimeConfig()
 const searchText = ref<string>('')
 const infoText = ref<string>()
 
@@ -33,7 +34,7 @@ export type BookResults = {
 const bookResults = ref<BookResults>(null)
 
 const bookSearch = async ({ value }: { value: string }) => {
-  const url = computed(() => `/api/book/${value}`)
+  const url = computed(() => `${config.public.api.book.url}/${value}`)
   return await useFetch<BookApiResponse, string>(url)
 }
 
