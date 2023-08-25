@@ -52,9 +52,6 @@ import '@/assets/main.css'
 
 const date = useAppConfig().buildDate
 const production = process.env.NODE_ENV === 'production'
-</script>
-
-<script lang="ts">
 useHead({
   htmlAttrs: {
     lang: 'en'
