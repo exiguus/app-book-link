@@ -35,18 +35,21 @@ import { computed } from 'vue'
 import SrOnly from './SrOnly.vue'
 import { isbnRegExpString } from '@/server/api/book/utils'
 
-const props = defineProps<{
-  searchValue: string
-  submit: () => void
+import useSearchText from '@/hooks/useSearchText'
+
+const { searchText } = useSearchText()
+defineProps<{
+  submit: (payload: Event | MouseEvent) => void
 }>()
-const emit = defineEmits(['update:searchValue'])
+
+const emit = defineEmits(['update:searchText'])
 
 const value = computed({
   get() {
-    return props.searchValue
+    return searchText.value
   },
   set(value) {
-    emit('update:searchValue', value)
+    emit('update:searchText', (searchText.value = value))
   }
 })
 </script>
