@@ -31,7 +31,7 @@
         <p v-if="infoText">{{ infoText }}</p>
       </nav>
     </div>
-    <div v-if="pending" class="loading">Loading...</div>
+    <div v-if="pending" class="loading"><ProgressLoading /></div>
     <div v-if="!pending && error" class="error">{{ error }}</div>
     <div v-if="!data && !pending && !error" class="no-data">No data</div>
   </div>
@@ -42,6 +42,7 @@ import SearchResultItem from './SearchResultItem.vue'
 import IconShare from './icons/IconShare.vue'
 import IconCopy from './icons/IconCopy.vue'
 import IconClear from './icons/IconClear.vue'
+import ProgressLoading from './ProgressLoading.vue'
 
 import { Book } from '@/server/api/book/types'
 defineProps<{
@@ -61,8 +62,7 @@ defineEmits(['update:book'])
 .results {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: 28rem;
 }
 
 @media (min-width: 1024px) {
@@ -112,6 +112,7 @@ defineEmits(['update:book'])
 .result-item {
   position: sticky;
   top: 2rem;
+  padding: 1rem 1rem 2rem;
   border: 1px solid var(--color-text);
   background-color: var(--color-background);
   z-index: 2;
@@ -126,15 +127,15 @@ defineEmits(['update:book'])
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 1rem 1rem 2rem;
   border-radius: 0.5rem;
+  min-height: 20rem;
 }
 
 .loading,
 .error,
 .no-data {
+  padding: 1rem 6rem 2rem;
   margin-bottom: 2rem;
   border: 1px solid var(--color-border);
-  min-height: 12rem;
 }
 </style>
