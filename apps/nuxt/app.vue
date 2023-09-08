@@ -52,6 +52,8 @@ const date = useAppConfig().buildDate
 const isProduction = process.env.NODE_ENV === 'production'
 const config = useRuntimeConfig()
 
+const SearchBook = defineAsyncComponent(() => import('@/components/SearchBook.vue'))
+
 useHead({
   htmlAttrs: {
     lang: 'en'
