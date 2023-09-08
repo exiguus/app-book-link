@@ -3,11 +3,6 @@ import { resolve } from 'path'
 export default defineNuxtConfig({
   devtools: { enabled: true },
   components: true,
-  vue: {
-    compilerOptions: {
-      isCustomElement: (tag) => ['VitePwaManifest'].includes(tag)
-    }
-  },
   typescript: {
     strict: true
   },
