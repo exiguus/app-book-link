@@ -44,7 +44,7 @@ import IconCopy from './icons/IconCopy.vue'
 import IconClear from './icons/IconClear.vue'
 import ProgressLoading from './ProgressLoading.vue'
 
-import { Book } from '@/server/api/book/types'
+import type { Book } from '@/server/api/book/types'
 defineProps<{
   data: Book | null
   pending: boolean

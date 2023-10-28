@@ -38,12 +38,14 @@ function help() {
  */
 async function install(path: string) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { peerDependencies, devDependencies, dependencies } = require(join(
-    SCRIPT_PATH,
-    path,
-    // eslint-disable-next-line sonarjs/no-duplicate-string
-    'package.json'
-  ))
+  const { peerDependencies, devDependencies, dependencies } = require(
+    join(
+      SCRIPT_PATH,
+      path,
+      // eslint-disable-next-line sonarjs/no-duplicate-string
+      'package.json'
+    )
+  )
 
   if (!peerDependencies) {
     throw new Error(`No peerDependencies found in ${path}package.json`)
@@ -128,11 +130,9 @@ async function add(file: string, path: string) {
   } else {
     console.log('\n', `Add ${file} peerDependencies to ${path}package.json`, '\n')
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { peerDependencies: existingPeerDependencies } = require(join(
-      SCRIPT_PATH,
-      path,
-      'package.json'
-    ))
+    const { peerDependencies: existingPeerDependencies } = require(
+      join(SCRIPT_PATH, path, 'package.json')
+    )
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { ...rest } = require(join(SCRIPT_PATH, path, 'package.json'))
     const packageJson = JSON.stringify(
@@ -160,11 +160,9 @@ async function add(file: string, path: string) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { peerDependencies: expectedPeerDependencies } = require(join(SCRIPT_PATH, file))
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { peerDependencies: currentPeerDependencies } = require(join(
-    SCRIPT_PATH,
-    path,
-    'package.json'
-  ))
+  const { peerDependencies: currentPeerDependencies } = require(
+    join(SCRIPT_PATH, path, 'package.json')
+  )
   test(expectedPeerDependencies, currentPeerDependencies, path)
 }
 

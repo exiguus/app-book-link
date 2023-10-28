@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 /// <reference types="vite" />
-import { defineConfig, UserConfig } from 'vite'
+import { defineConfig } from 'vite'
+import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 

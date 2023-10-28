@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, StyleValue } from 'vue'
+import { reactive } from 'vue'
+import type { StyleValue } from 'vue'
 import ProgressSpinner from './ProgressSpinner.vue'
 
 function style(): StyleValue {

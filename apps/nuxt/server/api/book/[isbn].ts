@@ -1,4 +1,4 @@
-import { BookApiResponse } from './types'
+import type { BookApiResponse } from './types'
 import { cache, getResults, generateResponse, isValidSearch } from './utils'
 
 export default defineEventHandler(async (event): Promise<BookApiResponse> => {
