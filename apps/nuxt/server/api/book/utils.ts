@@ -149,10 +149,7 @@ export async function getResults(resolve: string, timestamp: number): Promise<Bo
 
 // ISBN 10 or 13 validation
 // See: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
-export const isbnRegExpString =
-  '^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$'
-export const isbnRegExp = new RegExp(isbnRegExpString)
+// eslint-disable-next-line no-useless-escape
+export const isbnRegExp = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d\-]{9,17}[\dxX]$/
 
-export const isValidSearch = (search: string): boolean => {
-  return isbnRegExp.test(search)
-}
+export const isValidSearch = (search: string) => isbnRegExp.test(search)
