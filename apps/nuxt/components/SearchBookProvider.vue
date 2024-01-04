@@ -42,7 +42,7 @@ async function submit() {
     if (bookData) {
       const currentUrl = new URL(window.location.href)
       currentUrl.searchParams.set('share_text', bookData.isbn)
-      window.history.pushState({}, '', currentUrl.toString())
+      window.history.pushState({}, '', currentUrl)
     }
   } else {
     bookResults.value = {

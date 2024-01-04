@@ -10,17 +10,21 @@ export default defineComponent({
     }
   },
   setup(props, context) {
-    const { searchText } = useSearchText()
+    const { searchText, setSearchText } = useSearchText()
 
     function searchBySharedUrl(url: URL) {
       if (url.searchParams.has('share_text')) {
-        searchText.value = url.searchParams.get('share_text') || ''
+        const value = url.searchParams.get('share_text') || ''
+        setSearchText(value)
+        searchText.value = value
         props.submit()
 
         return
       }
       if (url.searchParams.has('share_title')) {
-        searchText.value = url.searchParams.get('share_title') || ''
+        const value = url.searchParams.get('share_title') || ''
+        setSearchText(value)
+        searchText.value = value
         props.submit()
       }
     }
@@ -29,6 +33,14 @@ export default defineComponent({
       const currentURL = new URL(window.location.href)
       searchBySharedUrl(currentURL)
     })
+
+    watch(
+      () => useRoute().fullPath,
+      () => {
+        const currentURL = new URL(window.location.href)
+        searchBySharedUrl(currentURL)
+      }
+    )
 
     return () => h('i', context.attrs, context.slots)
   }

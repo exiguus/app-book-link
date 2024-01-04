@@ -6,6 +6,9 @@ const state = reactive({
 
 export default function useSearchText() {
   return {
-    ...toRefs(state)
+    ...toRefs(state),
+    setSearchText: (newSearchText: string) => {
+      state.searchText = newSearchText
+    }
   }
 }
