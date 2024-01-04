@@ -1,6 +1,6 @@
 {
   "name": "book-link",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Digitalize and share your bookshelf",
   "scripts": {
     "dev": "turbo run dev --parallel --no-cache",
