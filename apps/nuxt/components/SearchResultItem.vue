@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import SrOnly from './SrOnly.vue'
-import type { Book } from '@/server/api/book/types'
+import type { Book } from '@/types/books'
 defineProps<{
   data: Book
   copy: () => void

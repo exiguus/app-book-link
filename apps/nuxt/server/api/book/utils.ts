@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import isbn from 'node-isbn'
 import axios from 'axios'
-import { isBook, isBookWithImageLinks } from './types'
-import type { BookApiResponse, BookSearch } from './types'
+import { isBook, isBookWithImageLinks } from '@/types/books'
+import type { BookApiResponse, BookSearch } from '@/types/books'
 import { RuntimeCache } from '@/libs/RuntimeCache.class'
 export const cache = new RuntimeCache()
 export const providers = {

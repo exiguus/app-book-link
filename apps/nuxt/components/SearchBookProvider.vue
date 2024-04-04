@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { isBookData, isErrorData } from '@/server/api/book/types'
-import type { Book, BookApiResponse } from '@/server/api/book/types'
+// TODO: move
+import { isBookData, isErrorData } from '@/types/books'
+import type { Book, BookApiResponse } from '@/types/books'
 import useSearchText from '@/hooks/useSearchText'
 
 const { searchText } = useSearchText()
