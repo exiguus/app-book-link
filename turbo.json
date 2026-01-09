@@ -3,11 +3,11 @@
   "tasks": {
     "clean": {
       "dependsOn": ["^clean"],
-      "inputs": [".output/**", ".nuxt/**"]
+      "inputs": [".output/**", ".nuxt/**", "dist/**"]
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".output/**", ".nuxt/**"]
+      "outputs": [".output/**", ".nuxt/**", "dist/**"]
     },
     "test": {
       "dependsOn": ["^test", "lint", "build"],
