@@ -41,15 +41,15 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^18.19.100",
+    "@types/node": "^25.0.3",
     "conventional-changelog-conventionalcommits": "^6.1.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "dotenv-cli": "^7.4.4",
     "eslint": "^8.57.1",
-    "eslint-config-prettier": "^8.10.0",
+    "eslint-config-prettier": "^8.10.2",
     "eslint-config-turbo": "^0.0.10",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-sonarjs": "^0.18.0",
     "eslint-plugin-testing-library": "^6.5.0",
     "eslint-plugin-vue": "^9.33.0",
@@ -58,12 +58,12 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-watch-typeahead": "^2.2.2",
     "lint-staged": "^13.3.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.7.4",
     "standard-version": "^9.5.0",
-    "ts-jest": "^29.3.2",
-    "turbo": "^2.5.3",
-    "typescript": "^5.8.3",
-    "typescript-plugin-css-modules": "^5.1.0"
+    "ts-jest": "^29.4.6",
+    "turbo": "^2.7.3",
+    "typescript": "^5.9.3",
+    "typescript-plugin-css-modules": "^5.2.0"
   },
   "lint-staged": {
     "*.@(ts|tsx|vue|mjs|cjs)": [
@@ -82,7 +82,8 @@
   "pnpm": {
     "peerDependencyRules": {
       "allowedVersions": {
-        "@nuxt/test-utils>vitest": "0.34"
+        "@nuxt/test-utils>vitest": "0.34",
+        "eslint@*": "8.57.1"
       }
     },
     "overrides": {
@@ -94,6 +95,7 @@
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "esbuild",
+      "less",
       "sharp",
       "unrs-resolver",
       "vue-demi"
