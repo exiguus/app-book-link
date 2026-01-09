@@ -4,6 +4,7 @@
 pnpm docs:build
 if [ -e packages/PACKAGES.md ]
 then
+  prettier --write packages/PACKAGES.md
   git add packages/PACKAGES.md
 fi
 pnpm lint-staged
