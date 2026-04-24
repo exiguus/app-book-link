@@ -15,8 +15,8 @@
         property="og:description"
         content="Past your ISBN, get the Book title and author, copy & share it."
       />
-      <Meta property="og:image" content="https://book-link.vercel.app/book_link.png" />
-      <Meta property="og:url" content="https://book-link.vercel.app/" />
+      <Meta property="og:image" content="https://book-link.exiguus.app/book_link.png" />
+      <Meta property="og:url" content="https://book-link.exiguus.app/" />
       <Meta property="og:site_name" content="book_link" />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

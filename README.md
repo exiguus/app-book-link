@@ -4,7 +4,7 @@ Search a Book by ISBN or Title and Author.
 And retrieve the book cover and description.
 Share the book with your friends.
 
-Try it: https://book-link.vercel.app/
+Try it: https://book-link.exiguus.app/
 
 ## Use Cases
 
